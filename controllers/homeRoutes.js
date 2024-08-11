@@ -3,15 +3,21 @@ const {Post, User} = require('../models/index');
 const withAuth = require('../utils/auth');
 
 // Define routes
-router.get('/', (req, res) => {
-    try {
-        res.render('homepage');
-    } catch (error) {
-         res.error('Error 404');
-    }
-    
-});
 
+// Route to render the homepage
+router.get('/', async (req, res) => {
+    try {
+      const posts = await Post.findAll(); // Fetch all posts
+  
+      res.render('homepage', {
+        title: 'Syntax Chronicals',
+        posts: posts.map(post => post.get({ plain: true })),
+        user: req.session.userId // Pass the user data for the conditional rendering
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 router.get('/login', (req, res) => {
     try {
@@ -40,3 +46,10 @@ router.get('/signup', (req, res) => {
 })
 
 module.exports = router;
+
+
+
+
+
+
+

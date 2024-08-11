@@ -10,8 +10,33 @@ router.get('/', (req, res) => {
          res.error('Error 404');
     }
     
-    
-   
 });
+
+
+router.get('/login', (req, res) => {
+    try {
+        if (req.session.logged_in) {
+            res.redirect('/profile');
+            return;
+          }
+        
+          res.render('login');
+    } catch (error) {
+        
+    }
+})
+
+router.get('/signup', (req, res) => {
+    try {
+        if (req.session.logged_in) {
+            res.redirect('/profile');
+            return;
+          }
+        
+          res.render('signup');
+    } catch (error) {
+        
+    }
+})
 
 module.exports = router;

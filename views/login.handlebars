@@ -1,22 +1,21 @@
-{{!-- Extending the main layout --}}
-{{#extend 'main'}}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Login</h2>
 
-{{!-- Defining the content for the body --}}
-{{#content 'body'}}
-    <h1>Login</h1>
-    <form id="login-form">
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+        <form class="form login-form">
+            <div class="form-group">
+                <label for="email-login">email:</label>
+                <input class="form-input" type="text" id="email-login" />
+            </div>
+            <div class="form-group">
+                <label for="password-login">password:</label>
+                <input class="form-input" type="password" id="password-login" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">login</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../public/js/login.js"></script>
 
-    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-{{/content}}
-
-{{/extend}}

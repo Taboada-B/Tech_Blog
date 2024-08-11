@@ -1,3 +1,17 @@
-
+<header>
+    <h1>Welcome to the SyntaxChronicals</h1>
+    {{#if user}}
+      <a href="/logout" class="logout">Logout</a>
+    {{/if}}
+  </header>
+  <div class="container">
+    {{#each posts}}
+      <div class="post">
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
+        <p>by: {{name}}</p>
+      </div>
+    {{/each}}
+  </div>
 
 <script src="../public/js/homepage.js"> </script>

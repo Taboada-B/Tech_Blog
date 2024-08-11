@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SyntaxChronicals</title>
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
+
 <body>
     <header>
         <nav>
-            <a href="/">Home</a>
+
             {{#if loggedIn}}
-                <a href="/dashboard">Dashboard</a>
-                <a href="/logout">Logout</a>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
             {{else}}
-                <a href="/login">Login</a>
-                <a href="/signup">Sign Up</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
             {{/if}}
         </nav>
     </header>
@@ -28,6 +31,7 @@
         <p>&copy; 2024 SyntaxChronicals</p>
     </footer>
 
-    <script src="/js/script.js"></script>
+    {{!-- <script src="/js/script.js"></script> --}}
 </body>
+
 </html>

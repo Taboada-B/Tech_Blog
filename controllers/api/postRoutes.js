@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const {Post} = require('../../models/index');
 
+//http://localhost:3001/posts
+
 //get post routes
 
 router.get('/', async (req, res) => {

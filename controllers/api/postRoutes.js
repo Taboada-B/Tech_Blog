@@ -1,5 +1,9 @@
 const router = require('express').Router();
 const {Post} = require('../../models/index');
+const withAuth = require('../../utils/auth');
+const fs = require('fs');
+const path = require('path');
+
 
 //http://localhost:3001/posts
 

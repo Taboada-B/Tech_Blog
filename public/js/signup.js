@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
   
     if (name && email && password) {
       console.log('Made it here! hopefully')
-      const response = await fetch('/users', {
+      const response = await fetch('/signup', {
         method: 'POST',
         body: JSON.stringify({ name, email, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -16,11 +16,9 @@ const signupFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+        alert(response.statusText, 'Failed to signup');
       }
     }
   };
 
-  document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+  document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

@@ -3,18 +3,18 @@
         <h1>Welcome to the {{title}}:</h1>
         <h3>Where Code Meets Creativity</h3>
     </div>
-    {{#if user}}
+    {{!-- {{#if user}}
     <a href="/logout" class="logout">Logout</a>
-    {{/if}}
+    {{/if}} --}}
 </header>
 <div class="container">
     {{#each posts}}
     <div class="post">
         <h2>{{title}}</h2>
         <p>{{content}}</p>
-        <p>by: {{user}}</p>
+        {{!-- <p>by: {{user}}</p>  todo this isn't working--}}
     </div>
     {{/each}}
 </div>
 
-<script src="../public/js/homepage.js"> </script>
+{{!-- <script src="../public/js/homepage.js"> </script> --}}

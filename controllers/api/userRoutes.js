@@ -3,7 +3,47 @@ const {User} = require('../../models');
 
 //http://localhost:3001/users
 
+// login route
+router.post('/login', async (req, res) => {
+    try {
+        const user = await User.findOne({where: {email: req.body.email} });
+        //validating email and password
+        if (!user || !user.checkPassword(req.body.password)) {
+            console.log('here 2')
+            return res.status(400).json({message: 'Invalid email or password'})
+            
+        }
+        console.log('here 3')
+        req.session.save(() => {
+            req.session.userId = user.id;
+            req.session.logged_in = true;
+            res.json({user, message: 'Logged in!'});
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
 
+})
+
+
+// signup route
+// User signup
+router.post('/signup', async (req, res) => {
+    try {
+        const userData = await User.create(req.body);
+        req.session.save(() => {
+            req.session.userId = userData.id;
+            req.session.logged_in = true;
+            res.json({ user: userData, message: 'Signup successful!' });
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+
+
+// crud for users below
 // Get all users
 router.get('/', async (req, res) => {
     try {

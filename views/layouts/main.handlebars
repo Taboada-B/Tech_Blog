@@ -16,7 +16,7 @@
             {{!-- {{#if loggedIn}} --}}
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
+            <button id="btnLogout"><a href="/login">Logout</a></button>
             {{!-- {{else}} --}}
             <a href="/login">Login</a>
             {{!-- {{/if}} --}}
@@ -26,7 +26,7 @@
     <main>
         {{{body}}}
     </main>
-
+<script src="/js/logout.js"></script>
     <footer>
         <p>&copy; 2024 SyntaxChronicals</p>
     </footer>

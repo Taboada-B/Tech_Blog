@@ -25,5 +25,11 @@
     "name": "bry",
     "email": "bry@gmail.com",
     "password": "$2b$10$dcw57K9uAX1L5wPNvG2LtuxC.LsG5LED6LR14jmoSclV4Q1B0t6qa"
+  },
+  {
+    "id": 7,
+    "name": "john",
+    "email": "john@gmail.com",
+    "password": "$2b$10$AztZXJZHNISorIvXG67W2.zCXbYjjhRPbmQUgMbZ/wvW1azXceZvS"
   }
 ]

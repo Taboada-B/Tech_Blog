@@ -1,17 +1,29 @@
 [
-    {
-      "name": "Sal",
-      "email": "sal@hotmail.com",
-      "password": "password12345"
-    },
-    {
-      "name": "Lernantino",
-      "email": "lernantino@gmail.com",
-      "password": "password12345"
-    },
-    {
-      "name": "Amiko",
-      "email": "amiko2k20@aol.com",
-      "password": "password12345"
-    }
-  ]
+  {
+    "name": "Sal",
+    "email": "sal@hotmail.com",
+    "password": "password12345"
+  },
+  {
+    "name": "Lernantino",
+    "email": "lernantino@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "name": "Amiko",
+    "email": "amiko2k20@aol.com",
+    "password": "password12345"
+  },
+  {
+    "id": 5,
+    "name": "bry",
+    "email": "bry@hotmail.com",
+    "password": "$2b$10$Dd1DNyOU/iqLFpVO1OBIJuBi642w966F0Nx0Oml8lw/rumVI2nRrm"
+  },
+  {
+    "id": 6,
+    "name": "bry",
+    "email": "bry@gmail.com",
+    "password": "$2b$10$dcw57K9uAX1L5wPNvG2LtuxC.LsG5LED6LR14jmoSclV4Q1B0t6qa"
+  }
+]

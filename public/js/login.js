@@ -37,6 +37,8 @@ console.log('login page 4')
   }
 };
 
+// signup
+
 const signupFormHandler = async (event) => {
   console.log('login page 15')
   event.preventDefault();
@@ -45,6 +47,7 @@ const signupFormHandler = async (event) => {
   const email = emailInputEl.value.toLowerCase().trim();
   const password = passwordInputEl.value.trim();
   
+
   if (name && email && password) {
     console.log('login page 16')
     console.log('name: ', name, 'email: ', email, 'password: ', password);
@@ -56,7 +59,7 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       console.log('response is okay! 1')
-      // window.location.href = "/login"; 
+      window.location.href = "/login"; 
     } else {
       console.log('resonse is not okay 2')
       alert(response.statusText);

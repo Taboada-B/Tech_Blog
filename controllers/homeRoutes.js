@@ -32,18 +32,18 @@ router.get('/login', (req, res) => {
     }
 })
 
-// router.get('/signup', (req, res) => {
-//     try {
-//         if (req.session.logged_in) {
-//             res.redirect('/profile');
-//             return;
-//           }
+router.get('/dashboard', (req, res) => {
+    try {
+        if (req.session.logged_in) {
+            res.redirect('/dashboard');
+            return;
+          }
         
-//           res.render('signup');
-//     } catch (error) {
+          res.render('dashboard');
+    } catch (error) {
         
-//     }
-// })
+    }
+})
 
 router.get('/logout', (req, res) => {
   if (req.session.logged_in) {

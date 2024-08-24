@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('clicked logout button')
+    console.log('at logout.js')
     const logout = async () => {
+        console.log('clicked logout button')
+        preventDefault();
       try {
         const response = await fetch('/api/user/logout', {
           method: 'POST',
@@ -8,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
   
         if (response.ok) {
-          document.location.replace('/login');
+            console.log('session logout worked')
+        //   document.location.replace('/login');
         }
       } catch (error) {
         console.log('didnt logout');

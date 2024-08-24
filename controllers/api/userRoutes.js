@@ -179,18 +179,31 @@ router.post('/login', async (req, res) => {
 
 // signup route
 // User signup
-router.post('/signup', async (req, res) => {
-    try {
-        const userData = await User.create(req.body);
-        req.session.save(() => {
-            req.session.userId = userData.id;
-            req.session.logged_in = true;
-            res.json({ user: userData, message: 'Signup successful!' });
-        });
-    } catch (err) {
-        res.status(400).json(err);
-    }
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      // SAVES USER DATA TO USERDATA.JSON
+
+      saveUserDataToFile({
+        id: userData.id,
+        name: userData.name,
+        email: userData.email,
+        password: userData.password,
+      });
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
+
+
 
 // POST TO LOG OUT USER
 // localhost:3001/api/user/logout

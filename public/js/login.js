@@ -1,8 +1,8 @@
 
   // signup
-  // const nameInputEl = document.getElementById('name-signup');
-  // const emailInputEl = document.getElementById('email-signup');
-  // const passwordInputEl = document.getElementById('password-signup');
+  const nameInputEl = document.getElementById('name-signup');
+  const emailInputEl = document.getElementById('email-signup');
+  const passwordInputEl = document.getElementById('password-signup');
   // login
   const passwordLoginEl = document.getElementById('password-login');  
   const loginEmailInputEl = document.getElementById('email-login');
@@ -37,6 +37,33 @@ console.log('login page 4')
   }
 };
 
+const signupFormHandler = async (event) => {
+  console.log('login page 15')
+  event.preventDefault();
+  // receiving 
+  const name = nameInputEl.value.trim();
+  const email = emailInputEl.value.toLowerCase().trim();
+  const password = passwordInputEl.value.trim();
+  
+  if (name && email && password) {
+    console.log('login page 16')
+    console.log('name: ', name, 'email: ', email, 'password: ', password);
+    const response = await fetch('/api/user', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      console.log('response is okay! 1')
+      // window.location.href = "/login"; 
+    } else {
+      console.log('resonse is not okay 2')
+      alert(response.statusText);
+    }
+  }
+};
+
 document.getElementById("login-form").addEventListener("submit", loginFormHandler);
 
-// document.getElementById("signup-form").addEventListener("submit", signupFormHandler);
+document.getElementById("signup-form").addEventListener("submit", signupFormHandler);

@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
     try {
         if (req.session.logged_in) {
-            res.redirect('/profile');
+            res.redirect('/');
             return;
           }
         
@@ -32,18 +32,18 @@ router.get('/login', (req, res) => {
     }
 })
 
-router.get('/signup', (req, res) => {
-    try {
-        if (req.session.logged_in) {
-            res.redirect('/profile');
-            return;
-          }
+// router.get('/signup', (req, res) => {
+//     try {
+//         if (req.session.logged_in) {
+//             res.redirect('/profile');
+//             return;
+//           }
         
-          res.render('signup');
-    } catch (error) {
+//           res.render('signup');
+//     } catch (error) {
         
-    }
-})
+//     }
+// })
 
 router.get('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -51,7 +51,7 @@ router.get('/logout', (req, res) => {
           res.redirect('/');
       });
   } else {
-      res.redirect('/');
+      res.redirect('/login');
   }
 });
 

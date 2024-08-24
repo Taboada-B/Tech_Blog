@@ -1,1 +1,25 @@
-<div>Dashboard area </div>
+<main class="container">
+  <h1>Dashboard</h1>
+
+  <form id="new-post-form">
+    <div class="field">
+      <label class="label" for="post-title">Title</label>
+      <div class="control">
+        <input class="input" type="text" id="post-title" name="title" placeholder="Enter post title" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="post-content">Content</label>
+      <div class="control">
+        <textarea class="textarea" id="post-content" name="content" placeholder="Enter post content" required></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-primary" type="submit">Submit Post</button>
+      </div>
+    </div>
+  </form>
+</main>

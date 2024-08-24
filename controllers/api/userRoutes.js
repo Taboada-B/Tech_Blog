@@ -162,9 +162,6 @@ router.post('/login', async (req, res) => {
 });
 
 
-
-
-
 // POST TO LOG OUT USER
 // localhost:3001/api/user/logout
 router.post('/logout', (req, res) => {

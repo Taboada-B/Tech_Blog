@@ -32,23 +32,22 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Route to create a new post
-router.post('/', async (req, res) => {
-    try {
-      if (!req.session.logged_in) {
-        return res.status(401).json({ message: 'You need to log in first!' });
-      }
-  
-      const newPost = await Post.create({
-        ...req.body,
-        user_id: req.session.user_id, // Link the post to the user via session
-      });
-  
-      res.status(200).json(newPost);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+
+// Create a new post
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newPost = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id, 
+    });
+
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 // // Update a post by ID
 // router.put('/:id', async (req, res) => {

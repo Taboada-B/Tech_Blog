@@ -110,27 +110,72 @@ router.delete('/:id', async (req, res) => {
 
 
 // login route
+// router.post('/login', async (req, res) => {
+//     try {
+//         const user = await User.findOne({where: {email: req.body.email} });
+//         //validating email and password
+//         if (!user || !user.checkPassword(req.body.password)) {
+//             console.log('here 2')
+//             return res.status(400).json({message: 'Invalid email or password'})
+            
+//         }
+//         console.log('here 3')
+//         req.session.save(() => {
+//             req.session.userId = user.id;
+//             req.session.logged_in = true;
+//             res.json({user, message: 'Logged in!'});
+//         })
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+
+// })
+
+// login attempt 2
+
 router.post('/login', async (req, res) => {
     try {
-        const user = await User.findOne({where: {email: req.body.email} });
-        //validating email and password
-        if (!user || !user.checkPassword(req.body.password)) {
-            console.log('here 2')
-            return res.status(400).json({message: 'Invalid email or password'})
-            
-        }
-        console.log('here 3')
-        req.session.save(() => {
-            req.session.userId = user.id;
-            req.session.logged_in = true;
-            res.json({user, message: 'Logged in!'});
-        })
-    } catch (error) {
-        res.status(500).json(error)
+      const { email, password } = req.body;  // Destructure the request body
+      console.log('are we here? 42')
+      if (!email || !password) {
+        res.status(400).json({ message: 'Please provide both email and password.' });
+        return;
+      }
+  
+      const filePath = path.join(__dirname, '../../seeds/userData.json');
+      const fileData = fs.readFileSync(filePath);
+      const users = JSON.parse(fileData);
+  
+      const user = users.find(user => user.email === email);
+  
+  
+  
+      if (!user) {
+        console.log('user routes error 25')
+        res.status(400).json({ message: 'Incorrect email or password, please try again' });
+        return;
+      }
+  
+      // Use bcrypt to compare the plain text password with the hashed password
+      const validPassword = await bcrypt.compare(password, user.password);
+  
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect email or password, please try again' });
+        return;
+      }
+  
+      req.session.save(() => {
+        console.log('Session data: ', req.session);
+        req.session.user_id = user.id;
+        req.session.logged_in = true;
+        res.json({ user: user, message: 'You are now logged in!' });
+      });
+  
+    } catch (err) {
+      console.error('Login error:', err);
+      res.status(400).json({ message: 'An error occurred while trying to log in.', error: err.message });
     }
-
-})
-
+  });
 
 // signup route
 // User signup
@@ -147,9 +192,19 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// POST TO LOG OUT USER
+// localhost:3001/api/user/logout
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+  
+      res.status(404).end();
+    }
+  });
 
 
-// crud for users below
-// Get all users
 
 module.exports = router;

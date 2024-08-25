@@ -1,5 +1,6 @@
 console.log('at dashboard.js')
-document.getElementById('new-post-form').addEventListener('submit', async (event) => {
+
+const addPost = async (event) => {
     event.preventDefault();
   
     const title = document.getElementById('post-title').value.trim();
@@ -13,9 +14,11 @@ document.getElementById('new-post-form').addEventListener('submit', async (event
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard'); // Redirect to the dashboard
+        alert('Post created successfully!');
       } else {
         alert('Failed to create post');
       }
     }
-  });
+  };
+
+  document.getElementById('new-post-form').addEventListener('submit', addPost);

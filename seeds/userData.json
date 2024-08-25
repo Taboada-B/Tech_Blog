@@ -34,5 +34,11 @@
     "name": "Marky",
     "email": "marky@gmail.com",
     "password": "$2b$10$JFdrKn/3UZwu94CikpvMMuglWeLJsAyjMZGTjZAOxIeSPfSF2l3se"
+  },
+  {
+    "id": 4,
+    "name": "Emily",
+    "email": "emily@gmail.com",
+    "password": "$2b$10$2eDKEuv7QBvpFvk5GJLgpum0Emu4ZGfDRbFHt0AXhrx./LH0/qw8y"
   }
 ]

@@ -16,5 +16,11 @@
     "name": "john",
     "email": "john@gmail.com",
     "password": "$2b$10$AztZXJZHNISorIvXG67W2.zCXbYjjhRPbmQUgMbZ/wvW1azXceZvS"
+  },
+  {
+    "id": 1,
+    "name": "bryan",
+    "email": "bryan@gmail.com",
+    "password": "$2b$10$u3sxa8FqheS/LClAmnj7qOwXSvU7Z/nn2i.x2C3/BJXJsn/HKpjcq"
   }
 ]

@@ -115,48 +115,84 @@ router.delete('/:id', async (req, res) => {
 
 
 
-// login route
+// login route attempt 1
 
+// router.post('/login', async (req, res) => {
+//   try {
+//     const { email, password } = req.body;  // Destructure the request body
+//     if (!email || !password) {
+//       res.status(400).json({ message: 'Please provide both email and password.' });
+//       return;
+//     }
+
+//     const filePath = path.join(__dirname, '../../seeds/userData.json');
+//     const fileData = fs.readFileSync(filePath);
+//     const users = JSON.parse(fileData);
+
+//     const user = users.find(user => user.email === email);
+
+
+
+//     if (!user) {
+//       console.log('user routes error 25')
+//       res.status(400).json({ message: 'Incorrect email or password, please try again' });
+//       return;
+//     }
+
+//     // Use bcrypt to compare the plain text password with the hashed password
+//     const validPassword = await bcrypt.compare(password, user.password);
+
+//     if (!validPassword) {
+//       res.status(400).json({ message: 'Incorrect email or password, please try again' });
+//       return;
+//     }
+
+//     req.session.save(() => {
+//       console.log('Session data: ', req.session);
+//       req.session.user_id = user.id;
+//       req.session.logged_in = true;
+//       res.json({ user: user, message: 'You are now logged in!' });
+//     });
+
+//   } catch (err) {
+//     console.error('Login error:', err);
+//     res.status(400).json({ message: 'An error occurred while trying to log in.', error: err.message });
+//   }
+// });
+
+// login attempt 2 using sql
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;  // Destructure the request body
+    const { email, password } = req.body;
+
     if (!email || !password) {
-      res.status(400).json({ message: 'Please provide both email and password.' });
-      return;
+      return res.status(400).json({ message: 'Please provide both email and password.' });
     }
 
-    const filePath = path.join(__dirname, '../../seeds/userData.json');
-    const fileData = fs.readFileSync(filePath);
-    const users = JSON.parse(fileData);
-
-    const user = users.find(user => user.email === email);
-
-
+    // Query the database for the user
+    const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      console.log('user routes error 25')
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
+      return res.status(400).json({ message: 'Incorrect email or password, please try again.' });
     }
 
-    // Use bcrypt to compare the plain text password with the hashed password
+    // Use bcrypt to compare the plain text password with the hashed password in the database
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
+      return res.status(400).json({ message: 'Incorrect email or password, please try again.' });
     }
 
+    // Save the session data
     req.session.save(() => {
-      console.log('Session data: ', req.session);
       req.session.user_id = user.id;
       req.session.logged_in = true;
-      res.json({ user: user, message: 'You are now logged in!' });
+      res.json({ user, message: 'You are now logged in!' });
     });
 
   } catch (err) {
     console.error('Login error:', err);
-    res.status(400).json({ message: 'An error occurred while trying to log in.', error: err.message });
+    res.status(500).json({ message: 'An error occurred while trying to log in.', error: err.message });
   }
 });
 

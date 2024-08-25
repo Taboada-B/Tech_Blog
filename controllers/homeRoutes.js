@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 // Define routes
 
 // Route to render the homepage
-router.get('/', async (req, res) => {
+router.get('/',  async (req, res) => { //withAuth,
     try {
       const posts = await Post.findAll(); // Fetch all posts
   
@@ -32,7 +32,7 @@ router.get('/login', (req, res) => {
     }
 })
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', (req, res) => { // withAuth,
     try {
         if (req.session.logged_in) {
             res.redirect('/dashboard');

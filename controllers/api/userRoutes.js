@@ -174,4 +174,15 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// ROUTE TO CHECK SESSION DATA
+// localhost:3001/api/user/session
+router.get('/session', (req, res) => {
+ try {
+  res.json(req.session);
+ } catch (error) {
+  res.status(500).json({message: 'an error here in session, userRoutes.js'})
+ } 
+});
+
+
 module.exports = router;

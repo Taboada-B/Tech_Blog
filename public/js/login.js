@@ -1,4 +1,4 @@
-
+console.log('at login.js')
   // signup
   const nameInputEl = document.getElementById('name-signup');
   const emailInputEl = document.getElementById('email-signup');

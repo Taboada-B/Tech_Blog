@@ -1,20 +1,21 @@
-<header>
-    <div class="header">
-        <h1>Welcome to the {{title}}:</h1>
-        <h3>Where Code Meets Creativity</h3>
+<main>
+    <header>
+        <nav class="navbar container-fluid col-6">
+            <a href="/dashboard">Dashboard</a>
+            <a id="btnLogout" href="/login">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Posts:</h1>
+        {{#each posts}}
+        <div class="post container">
+            <h2 class="title">{{title}}</h2>
+            <p class="content">{{content}}</p>
+            {{!-- <p>by: {{user}}</p> todo this isn't working--}}
+        </div>
+        {{/each}}
     </div>
-    {{!-- {{#if user}}
-    <a href="/logout" class="logout">Logout</a>
-    {{/if}} --}}
-</header>
-<div class="container">
-    {{#each posts}}
-    <div class="post container">
-        <h2 class="title">{{title}}</h2>
-        <p class="content">{{content}}</p>
-        {{!-- <p>by: {{user}}</p>  todo this isn't working--}}
-    </div>
-    {{/each}}
-</div>
 
-<script src="/js/homepage.js"></script>
+    <script src="/js/homepage.js"></script>
+    <script src="/js/logout.js"></script>
+</main>

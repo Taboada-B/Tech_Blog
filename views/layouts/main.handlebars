@@ -10,24 +10,20 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body class="container-fluid">
     <header>
-        <nav class="navbar container-fluid col-6">
 
-            {{!-- {{#if loggedIn}} --}}
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a id="btnLogout" href="/login">Logout</a>
-            {{!-- {{else}} --}}
-             <a href="/login">Login</a>
-            {{!-- {{/if}} --}}
-        </nav>
+         <div class="header">
+        <h1>Welcome to the SyntaxChronicals</h1>
+        <h3>Where Code Meets Creativity</h3>
+    </div>
+       
     </header>
+
 
     <main>
         {{{body}}}
     </main>
-    <script src="/js/logout.js"></script>
     <footer class="text-center m-4">
         <p>&copy; 2024 SyntaxChronicals</p>
     </footer>

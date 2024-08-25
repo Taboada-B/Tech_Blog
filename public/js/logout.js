@@ -1,5 +1,6 @@
+console.log('at logout.js')
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('at logout.js')
+    
     const logout = async () => {
         console.log('clicked logout button')
         preventDefault();
@@ -22,4 +23,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnLogout')
     .addEventListener('click', logout);
   });
-  

@@ -1,3 +1,4 @@
+console.log('at dashboard.js')
 document.getElementById('new-post-form').addEventListener('submit', async (event) => {
     event.preventDefault();
   

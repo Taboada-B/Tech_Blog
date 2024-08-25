@@ -1,6 +1,10 @@
 <main class="container">
-  <h1>Dashboard</h1>
-
+  <nav class="navbar container-fluid col-6">
+    <a href="/">Home</a> 
+    <a id="btnLogout" href="/login">Logout</a>
+  </nav>
+<h1>Dashboard:</h1>
+  
   <form id="new-post-form">
     <div class="field">
       <label class="label" for="post-title">Title</label>
@@ -12,7 +16,8 @@
     <div class="field">
       <label class="label" for="post-content">Content</label>
       <div class="control">
-        <textarea class="textarea" id="post-content" name="content" placeholder="Enter post content" required></textarea>
+        <textarea class="textarea" id="post-content" name="content" placeholder="Enter post content"
+          required></textarea>
       </div>
     </div>
 
@@ -24,3 +29,4 @@
   </form>
 </main>
 <script src="/js/dashboard.js"></script>
+<script src="/js/logout.js"></script>

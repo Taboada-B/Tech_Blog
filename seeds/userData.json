@@ -18,9 +18,9 @@
     "password": "$2b$10$AztZXJZHNISorIvXG67W2.zCXbYjjhRPbmQUgMbZ/wvW1azXceZvS"
   },
   {
-    "id": 1,
-    "name": "bryan",
-    "email": "bryan@gmail.com",
-    "password": "$2b$10$u3sxa8FqheS/LClAmnj7qOwXSvU7Z/nn2i.x2C3/BJXJsn/HKpjcq"
+    "id": 2,
+    "name": "Pancake",
+    "email": "cakes@gmail.com",
+    "password": "$2b$10$J0xbULzwMrEaSsDcDR/4ou01bIq8XKO0zVeSYSXNs4Odc5W3Ue2lm"
   }
 ]

@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
     console.log('Received data:', req.body);
-
+// if logged in correctly, save session information
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -120,7 +120,6 @@ router.delete('/:id', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;  // Destructure the request body
-    console.log('are we here? 42')
     if (!email || !password) {
       res.status(400).json({ message: 'Please provide both email and password.' });
       return;

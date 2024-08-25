@@ -57,6 +57,7 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       console.log('response is okay!')
+      alert('You have successfully signed up! Now please log in')
       // window.location.href = "/login"; 
     } else {
       console.log('resonse is not okay')

@@ -1,12 +1,12 @@
 <main>
     <header>
         <nav class="navbar container-fluid col-6">
-            <a href="/dashboard">Dashboard</a>
-            <a id="btnLogout" href="/login">Logout</a>
+            <a class="btn btn-default" role="button" href="/dashboard">Dashboard</a>
+            <a class="btn btn-default" role="button" id="btnLogout" href="/login">Logout</a>
         </nav>
     </header>
     <div class="container">
-        <h1>Posts:</h1>
+        <h1>Posts</h1>
         {{#each posts}}
         <div class="post container">
             <h2 class="title">{{title}}</h2>

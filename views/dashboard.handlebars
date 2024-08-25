@@ -1,22 +1,25 @@
 <main class="container">
   <nav class="navbar container-fluid col-6">
-    <a href="/">Home</a> 
-    <a id="btnLogout" href="/login">Logout</a>
+    <a class="btn btn-default" role="button" href="/">Home</a> 
+    <a class="btn btn-default" role="button" id="btnLogout" href="/login">Logout</a>
   </nav>
-<h1>Dashboard:</h1>
+<h1>Dashboard</h1>
   
   <form id="new-post-form">
     <div class="field">
-      <label class="label" for="post-title">Title</label>
-      <div class="control">
-        <input class="input" type="text" id="post-title" name="title" placeholder="Enter post title" required>
+      <label class="label" for="post-title">Title:</label>
+      <div class="control m-2">
+        <textarea name="title" class="form-control" rows="1" id="post-title" placeholder="Enter post title"></textarea>
       </div>
+      {{!-- <div class="control m-2">
+        <input class="input" type="text" id="post-title" name="title" placeholder="Enter post title" required>
+      </div> --}}
     </div>
 
     <div class="field">
-      <label class="label" for="post-content">Content</label>
-      <div class="control">
-        <textarea class="textarea" id="post-content" name="content" placeholder="Enter post content"
+      <label class="label" for="post-content">Content:</label>
+      <div class="control m-2">
+        <textarea name="content" class="form-control " rows="3" id="post-content"  placeholder="Enter post content"
           required></textarea>
       </div>
     </div>

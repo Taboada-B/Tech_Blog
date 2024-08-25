@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
@@ -42,33 +42,33 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new user/signup
+// signup
 // api/user
-
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-    console.log('Received data:', req.body);
-// if logged in correctly, save session information
+    const {name, email, password} = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const userData = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      console.log('Session saved:', req.session);
+      res.status(200).json(userData)
     });
 
-    console.log('Saving user data to file...');
     saveUserDataToFile({
       id: userData.id,
       name: userData.name,
       email: userData.email,
-      password: userData.password,
+      password: hashedPassword, 
     });
 
-    console.log('User data saved to file successfully.');
-    res.status(200).json(userData);
-
   } catch (err) {
-    console.error('Error creating user:', err);
     res.status(400).json({ message: 'Failed to create user', error: err });
   }
 });
@@ -116,83 +116,47 @@ router.delete('/:id', async (req, res) => {
 
 
 // login route attempt 1
+// api/user/login
 
-// router.post('/login', async (req, res) => {
-//   try {
-//     const { email, password } = req.body;  // Destructure the request body
-//     if (!email || !password) {
-//       res.status(400).json({ message: 'Please provide both email and password.' });
-//       return;
-//     }
-
-//     const filePath = path.join(__dirname, '../../seeds/userData.json');
-//     const fileData = fs.readFileSync(filePath);
-//     const users = JSON.parse(fileData);
-
-//     const user = users.find(user => user.email === email);
-
-
-
-//     if (!user) {
-//       console.log('user routes error 25')
-//       res.status(400).json({ message: 'Incorrect email or password, please try again' });
-//       return;
-//     }
-
-//     // Use bcrypt to compare the plain text password with the hashed password
-//     const validPassword = await bcrypt.compare(password, user.password);
-
-//     if (!validPassword) {
-//       res.status(400).json({ message: 'Incorrect email or password, please try again' });
-//       return;
-//     }
-
-//     req.session.save(() => {
-//       console.log('Session data: ', req.session);
-//       req.session.user_id = user.id;
-//       req.session.logged_in = true;
-//       res.json({ user: user, message: 'You are now logged in!' });
-//     });
-
-//   } catch (err) {
-//     console.error('Login error:', err);
-//     res.status(400).json({ message: 'An error occurred while trying to log in.', error: err.message });
-//   }
-// });
-
-// login attempt 2 using sql
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.body;  // Destructure the request body
 
     if (!email || !password) {
-      return res.status(400).json({ message: 'Please provide both email and password.' });
+      res.status(400).json({ message: 'Please provide both email and password.' });
+      return;
     }
 
-    // Query the database for the user
-    const user = await User.findOne({ where: { email } });
+    const filePath = path.join(__dirname, '../../seeds/userData.json');
+    const fileData = fs.readFileSync(filePath);
+    const users = JSON.parse(fileData);
+
+    const user = users.find(user => user.email === email);
 
     if (!user) {
-      return res.status(400).json({ message: 'Incorrect email or password, please try again.' });
+      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      return;
     }
 
-    // Use bcrypt to compare the plain text password with the hashed password in the database
+    // Use bcrypt to compare the plain text password with the hashed password
     const validPassword = await bcrypt.compare(password, user.password);
+    console.log('validPassword: ', validPassword);
 
     if (!validPassword) {
-      return res.status(400).json({ message: 'Incorrect email or password, please try again.' });
+      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      return;
     }
 
-    // Save the session data
     req.session.save(() => {
+      console.log('Session data: ', req.session);
       req.session.user_id = user.id;
       req.session.logged_in = true;
-      res.json({ user, message: 'You are now logged in!' });
+      res.json({ user: user, message: 'You are now logged in!' });
     });
 
   } catch (err) {
     console.error('Login error:', err);
-    res.status(500).json({ message: 'An error occurred while trying to log in.', error: err.message });
+    res.status(400).json({ message: 'An error occurred while trying to log in.', error: err.message });
   }
 });
 

@@ -17,14 +17,14 @@ const loginFormHandler = async (event) => {
   
 if (email && password) {
 
-    const response = await fetch('/api/user/login', {
+    const response = await fetch('/api/user/login/', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
     
     if (response.ok) {
-      
+      // console.log('would normally redirect to homepage, debugging now ')
       window.location.href = "/"; // Redirect to the homepage route
     } else {
   
@@ -49,7 +49,7 @@ const signupFormHandler = async (event) => {
 
   if (name && email && password) {
    
-    const response = await fetch('/api/user', {
+    const response = await fetch('/api/user/', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },

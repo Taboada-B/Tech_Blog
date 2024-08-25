@@ -22,5 +22,17 @@
     "name": "Pancake",
     "email": "cakes@gmail.com",
     "password": "$2b$10$J0xbULzwMrEaSsDcDR/4ou01bIq8XKO0zVeSYSXNs4Odc5W3Ue2lm"
+  },
+  {
+    "id": 1,
+    "name": "mark",
+    "email": "mark@gmail.com",
+    "password": "$2b$10$4lJsNZNI50SsJBq/TRBBz.em3X7ELZVNenfQ5EKBQTt5GV9u1maQm"
+  },
+  {
+    "id": 3,
+    "name": "Marky",
+    "email": "marky@gmail.com",
+    "password": "$2b$10$JFdrKn/3UZwu94CikpvMMuglWeLJsAyjMZGTjZAOxIeSPfSF2l3se"
   }
 ]

@@ -44,15 +44,15 @@ router.get('/:id', async (req, res) => {
 
 // signup
 // api/user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const {name, email, password} = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = await bcrypt.hash(password, 10);
 
     const userData = await User.create({
       name,
       email,
-      password: hashedPassword,
+      password,  // : hashedPassword,
     });
 
     req.session.save(() => {
@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
       id: userData.id,
       name: userData.name,
       email: userData.email,
-      password: hashedPassword, 
+      password: userData.password, //hashedPassword, 
     });
 
   } catch (err) {

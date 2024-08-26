@@ -1,44 +1,14 @@
 [
   {
-    "id": 5,
+    "id": 1,
     "name": "bry",
     "email": "bry@hotmail.com",
     "password": "$2b$10$Dd1DNyOU/iqLFpVO1OBIJuBi642w966F0Nx0Oml8lw/rumVI2nRrm"
   },
   {
-    "id": 6,
-    "name": "bry",
-    "email": "bry@gmail.com",
-    "password": "$2b$10$dcw57K9uAX1L5wPNvG2LtuxC.LsG5LED6LR14jmoSclV4Q1B0t6qa"
-  },
-  {
-    "id": 7,
-    "name": "john",
-    "email": "john@gmail.com",
-    "password": "$2b$10$AztZXJZHNISorIvXG67W2.zCXbYjjhRPbmQUgMbZ/wvW1azXceZvS"
-  },
-  {
     "id": 2,
-    "name": "Pancake",
-    "email": "cakes@gmail.com",
-    "password": "$2b$10$J0xbULzwMrEaSsDcDR/4ou01bIq8XKO0zVeSYSXNs4Odc5W3Ue2lm"
-  },
-  {
-    "id": 1,
-    "name": "mark",
-    "email": "mark@gmail.com",
-    "password": "$2b$10$4lJsNZNI50SsJBq/TRBBz.em3X7ELZVNenfQ5EKBQTt5GV9u1maQm"
-  },
-  {
-    "id": 3,
-    "name": "Marky",
-    "email": "marky@gmail.com",
-    "password": "$2b$10$JFdrKn/3UZwu94CikpvMMuglWeLJsAyjMZGTjZAOxIeSPfSF2l3se"
-  },
-  {
-    "id": 4,
-    "name": "Emily",
-    "email": "emily@gmail.com",
-    "password": "$2b$10$2eDKEuv7QBvpFvk5GJLgpum0Emu4ZGfDRbFHt0AXhrx./LH0/qw8y"
+    "name": "zach",
+    "email": "zach@gmail.com",
+    "password": "$2b$10$EotQc8rwXMR4rajzCcyI8OXk1I8Pg85HRpSgjN3BIJ2.qywajJJKC"
   }
 ]

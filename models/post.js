@@ -29,7 +29,7 @@ Post.init(
     },
     {
         sequelize,
-        timestamps: true, // To track when posts are created or updated
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'post',

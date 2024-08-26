@@ -1,35 +1,37 @@
-<main class="container">
-  <nav class="navbar container-fluid col-6">
-    <a class="btn btn-default" role="button" href="/">Home</a> 
-    <a class="btn btn-default" role="button" id="btnLogout" href="/login">Logout</a>
+<main class="container mt-5">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <div class=" navbar" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="btn btn-light me-2" role="button" href="/">Home</a> 
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-light" role="button" id="btnLogout" href="/login">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
-<h1>Dashboard</h1>
+
+  <h1 class="text-center mb-4">Dashboard</h1>
   
   <form id="new-post-form">
-    <div class="field">
-      <label class="label" for="post-title">Title:</label>
-      <div class="control m-2">
-        <textarea name="title" class="form-control" rows="1" id="post-title" placeholder="Enter post title"></textarea>
-      </div>
-      {{!-- <div class="control m-2">
-        <input class="input" type="text" id="post-title" name="title" placeholder="Enter post title" required>
-      </div> --}}
+    <div class="mb-3">
+      <label class="form-label" for="post-title">Title:</label>
+      <textarea name="title" class="form-control" rows="1" id="post-title" placeholder="Enter post title"></textarea>
     </div>
 
-    <div class="field">
-      <label class="label" for="post-content">Content:</label>
-      <div class="control m-2">
-        <textarea name="content" class="form-control " rows="3" id="post-content"  placeholder="Enter post content"
-          required></textarea>
-      </div>
+    <div class="mb-3">
+      <label class="form-label" for="post-content">Content:</label>
+      <textarea name="content" class="form-control" rows="3" id="post-content" placeholder="Enter post content" required></textarea>
     </div>
 
-    <div class="field">
-      <div class="control">
-        <button class="button is-primary" type="submit">Submit Post</button>
-      </div>
+    <div class="d-grid">
+      <button class="btn btn-primary" type="submit">Submit Post</button>
     </div>
   </form>
 </main>
+
 <script src="/js/dashboard.js"></script>
 <script src="/js/logout.js"></script>

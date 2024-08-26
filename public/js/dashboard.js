@@ -1,8 +1,7 @@
 console.log('at dashboard.js')
 
 const addPost = async (event) => {
-    event.preventDefault();
-  
+    
     const title = document.getElementById('post-title').value.trim();
     const content = document.getElementById('post-content').value.trim();
   

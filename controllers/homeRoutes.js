@@ -6,13 +6,18 @@ const withAuth = require('../utils/auth');
 
 // Route to render the homepage
 router.get('/', withAuth,  async (req, res) => { 
-    try {
-      const posts = await Post.findAll(); // Fetch all posts
+    try {// Fetch all posts
+      const posts = await Post.findAll({
+        include: {
+          model: User,
+          attributes: ['name']
+        }
+      }); 
   
       res.render('homepage', {
         title: 'Syntax Chronicals',
         posts: posts.map(post => post.get({ plain: true })),
-        user: req.session.user_id // Pass the user data for the conditional rendering req.session.logged_in
+        user: req.session.user_id 
       });
     } catch (err) {
       res.status(500).json(err);

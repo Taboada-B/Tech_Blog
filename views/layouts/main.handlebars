@@ -10,25 +10,29 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="container-fluid">
-    <header>
+<body class="d-flex flex-column min-vh-100">
 
-         <div class="header">
-        <h1>Welcome to the SyntaxChronicals</h1>
-        <h3>Where Code Meets Creativity</h3>
-    </div>
-       
+    <header class="bg-dark text-white text-center py-4 mb-4">
+        <div class="container">
+            <h1>Welcome to the SyntaxChronicals</h1>
+            <p class="lead">Where Code Meets Creativity</p>
+        </div>
     </header>
 
-
-    <main>
+    <main class="container flex-grow-1">
         {{{body}}}
     </main>
-    <footer class="text-center m-4">
-        <p>&copy; 2024 SyntaxChronicals</p>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 SyntaxChronicals</p>
+            <small class="text-muted">All rights reserved.</small>
+        </div>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-zPrKL+K4qEqkjI5KJ6yHUsERJnDP2F3pXwSm7T5kIu8jbGMOmE07qz7BykAcxA4Q"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

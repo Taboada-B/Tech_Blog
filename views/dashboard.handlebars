@@ -14,7 +14,8 @@
     </div>
   </nav>
 
-  <h1 class="text-center mb-4">Dashboard</h1>
+  <h1 class="text-center mb-4">{{user.name}}'s Dashboard</h1>
+  <p>{{user.title}}</p>
   
   <form id="new-post-form">
     <div class="mb-3">
@@ -31,6 +32,23 @@
       <button class="btn btn-primary" type="submit">Submit Post</button>
     </div>
   </form>
+ {{!-- {{#if posts.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
+
+    {{#each posts}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/{{posts.id}}">{{posts.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{posts.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}} --}}
+
 </main>
 
 <script src="/js/dashboard.js"></script>

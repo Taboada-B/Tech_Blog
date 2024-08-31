@@ -133,6 +133,9 @@ router.post('/login', async (req, res) => {
 
     const user = users.find(user => user.email === email);
 
+    // todo user.findOne   with a where clause
+    // search database 
+
     if (!user) {
       res.status(400).json({ message: 'Incorrect email or password, please try again' });
       return;

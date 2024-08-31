@@ -1,14 +1,8 @@
 [
-  {
+   {
     "id": 1,
-    "name": "bry",
-    "email": "bry@hotmail.com",
-    "password": "$2b$10$Dd1DNyOU/iqLFpVO1OBIJuBi642w966F0Nx0Oml8lw/rumVI2nRrm"
-  },
-  {
-    "id": 2,
-    "name": "zach",
-    "email": "zach@gmail.com",
-    "password": "$2b$10$EotQc8rwXMR4rajzCcyI8OXk1I8Pg85HRpSgjN3BIJ2.qywajJJKC"
+    "name": "Bryan",
+    "email": "bryan@gmail.com",
+    "password": "$2b$10$tW4cNSZQju5vs2HD24k3ceMo5HHROQQ6uGy7NEwASBCHmLvVEKp2S"
   }
 ]

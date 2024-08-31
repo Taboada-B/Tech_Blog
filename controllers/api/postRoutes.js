@@ -1,24 +1,24 @@
 const router = require('express').Router();
 const { Post } = require('../../models/index');
 const withAuth = require('../../utils/auth');
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
-const savePostToFile = (postData) => {
-  const filePath = path.join(__dirname, '../../seeds/postData.json');
+// const savePostToFile = (postData) => {
+//   const filePath = path.join(__dirname, '../../seeds/postData.json');
 
-  try {
-    const fileData = fs.readFileSync(filePath, 'utf-8');
-    const posts = JSON.parse(fileData);
+//   try {
+//     const fileData = fs.readFileSync(filePath, 'utf-8');
+//     const posts = JSON.parse(fileData);
 
-    posts.push(postData);
+//     posts.push(postData);
 
-    fs.writeFileSync(filePath, JSON.stringify(posts, null, 2));
-    console.log("Post successfully saved to file.");
-  } catch (err) {
-    console.error("Error reading or writing to postData.json:", err);
-  }
-};
+//     fs.writeFileSync(filePath, JSON.stringify(posts, null, 2));
+//     console.log("Post successfully saved to file.");
+//   } catch (err) {
+//     console.error("Error reading or writing to postData.json:", err);
+//   }
+// };
 
 
 //http://localhost:3001/posts
@@ -57,11 +57,12 @@ router.post('/', withAuth, async (req, res) => {
       content: req.body.content,
       user_id: req.session.user_id,
     });
-    savePostToFile({
-      title: newPost.title,
-      content: newPost.content,
-      user_id: newPost.user_id
-    })
+    // redundant, not good saving practice
+    // savePostToFile({
+    //   title: newPost.title,
+    //   content: newPost.content,
+    //   user_id: newPost.user_id
+    // })
 
     res.status(200).json(newPost);
 
@@ -70,40 +71,40 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// // Update a post by ID
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const [affectedRows] = await Post.update(req.body, {
-//             where: {
-//                 id: req.params.id,
-//             },
-//         });
-//         if (affectedRows === 0) {
-//             res.status(404).json({ message: 'Post not found' });
-//             return;
-//         }
-//         res.status(200).json({ message: 'Post updated successfully' });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+// Update a post by ID
+router.put('/:id', async (req, res) => {
+    try {
+        const [affectedRows] = await Post.update(req.body, {
+            where: {
+                id: req.params.id,
+            },
+        });
+        if (affectedRows === 0) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+        res.status(200).json({ message: 'Post updated successfully' });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
-// // Delete a post by ID
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const rowsDeleted = await Post.destroy({
-//             where: {
-//                 id: req.params.id,
-//             },
-//         });
-//         if (rowsDeleted === 0) {
-//             res.status(404).json({ message: 'Post not found' });
-//             return;
-//         }
-//         res.status(200).json({ message: 'Post deleted successfully' });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+// Delete a post by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const rowsDeleted = await Post.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
+        if (rowsDeleted === 0) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+        res.status(200).json({ message: 'Post deleted successfully' });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

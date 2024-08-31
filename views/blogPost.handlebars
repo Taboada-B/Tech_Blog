@@ -1,6 +1,4 @@
-<main>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                  <div class=" navbar" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
@@ -19,21 +17,13 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Posts</h1>
         <div class="row justify-content-center">
-            {{#each posts}}
-            <a href="/BlogPost">
             <div class="col-md-8 mb-4">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h2 class="card-title">{{title}}</h2>
-                        <p class="card-text m-2">{{content}}</p>
+                         <h2 class="card-title">Example title</h2> {{!-- {{title}} --}}
+                        <p class="card-text m-2">Example content</p>{{!--   {{content}} --}}
                     </div>
                 </div>
             </div>
-            </a>
-            {{/each}}
         </div>
     </div>
-
-    <script src="/js/homepage.js"></script>
-    <script src="/js/logout.js"></script>
-</main>

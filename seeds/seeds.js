@@ -20,7 +20,7 @@ const seedDatabase = async () => {
 
     await Post.create({
       ...post,
-      user_id: randomUser.id, // Assign the user ID to the post
+      user_id: randomUser.id, // Assign the user ID to the post just for seeding data.
     });
   }
 

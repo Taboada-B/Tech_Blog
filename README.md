@@ -55,6 +55,23 @@ WHEN I am idle on the site for more than a set time
 THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
 ```
 
+
+todo list:
+
+add date to posts
+
+click on posts and go to a new page, add more details about the blog, allow to add a comment. 
+
+when you add a comment, diplay the user who posted it and date. 
+
+dashboard brings up individual's posts and option to add a post 
+
+from dashboard page, allowed to update or delete your own post
+
+when log in time expires, propted to log back in. 
+
+
+
 ## Mock-Up
 
 The following animation demonstrates the application functionality:

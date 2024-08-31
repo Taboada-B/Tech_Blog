@@ -13,6 +13,8 @@ router.get('/', withAuth,  async (req, res) => {
           attributes: ['name']
         }
       }); 
+  console.log('post: ',  Post);  // todo to check for username 
+
   
       res.render('homepage', {
         title: 'Syntax Chronicals',
@@ -35,18 +37,6 @@ router.get('/login', (req, res) => {
       res.status(500).json(error)
     }
 })
-
-// router.get('/dashboard', withAuth, (req, res) => { // 
-//   console.log('session stuff: ', req.session.logged_in)  
-//   try {
-//     res.render('dashboard', {
-//       user: req.session.user_id 
-//   });
-        
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// })
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
@@ -71,6 +61,27 @@ router.get('/dashboard', withAuth, async (req, res) => {
       });
   } catch (err) {
       res.status(500).json(err);
+  }
+});
+
+router.get('/BlogPost', withAuth,  async (req, res) => { 
+  try {// Fetch all posts
+    const posts = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ['name']
+      }
+    }); 
+console.log('post: ',  Post);  // todo to check for username 
+
+
+    res.render('blogPost', {
+      title: 'Syntax Chronicals',
+      posts: posts.map(post => post.get({ plain: true })),
+      user: req.session.user_id 
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

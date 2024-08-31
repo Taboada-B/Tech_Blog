@@ -7,18 +7,19 @@ const withAuth = require('../utils/auth');
 // Route to render the homepage
 router.get('/', withAuth, async (req, res) => {
   try {// Fetch all posts
-    const posts = await Post.findAll({
+    const postData = await Post.findAll({
       include: {
         model: User,
         attributes: ['name']
       }
     });
-    console.log('post: ', Post);  // todo to check for username 
-
+    
+const posts = postData.map(post => post.get({ plain: true }))
+console.log('post: ', posts);  // todo to check for username 
 
     res.render('homepage', {
       title: 'Syntax Chronicals',
-      posts: posts.map(post => post.get({ plain: true })),
+      posts: posts,
       user: req.session.user_id
     });
   } catch (err) {
@@ -46,11 +47,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [
         {
           model: Post,
-          attributes: ['title','content','user_id'],
+          attributes: ['title','content'],
         }
       ],
     });
-
+    console.log('userdata info: ', userdata)
     // Check if user data was found
     if (!userData) {
       res.status(404).json({ message: 'User not found' });
@@ -59,7 +60,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     // Serialize the user data to pass to the template
     const user = userData.get({ plain: true });
-
+    console.log('user info: ', user)
     // Render the dashboard template with user data
     res.render('dashboard', {
       user, // Pass the user object to the template
@@ -70,45 +71,26 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-// from mini project
-// // Use withAuth middleware to prevent access to route
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Project }],
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-// end mini project snippet
-
+// wrong but is rendering right now
 router.get('/BlogPost', withAuth, async (req, res) => {
-  try {// Fetch all posts
-    const posts = await Post.findAll({
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
       include: {
-        model: User,
-        attributes: ['name']
+        model: Post,
+        attributes: ['title', 'content' ]
       }
     });
-    console.log('post: ', Post);  // todo to check for username 
 
+  // Serialize the user data to pass to the template
+  const user = userData.get({ plain: true });
 
     res.render('blogPost', {
       title: 'Syntax Chronicals',
-      posts: posts.map(post => post.get({ plain: true })),
-      user: req.session.user_id
+      user,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
+    console.log('we made it here 85')
     res.status(500).json(err);
   }
 });
@@ -118,9 +100,6 @@ router.get('/logout', (req, res) => {
     req.session.destroy(() => {
       res.redirect('/login');
     });
-  } else {
-
-    // res.redirect('/login');
   }
 });
 

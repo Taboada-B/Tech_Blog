@@ -51,7 +51,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         }
       ],
     });
-    console.log('userdata info: ', userdata)
+    console.log('userdata info: ', userData)
     // Check if user data was found
     if (!userData) {
       res.status(404).json({ message: 'User not found' });
